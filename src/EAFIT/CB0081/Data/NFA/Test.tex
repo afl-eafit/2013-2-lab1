@@ -1,0 +1,204 @@
+\documentclass[pdftex,a4paper]{article}
+\usepackage[spanish,activeacute, es-noshorthands]{babel}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgflibrarysnakes}
+\usepackage{algorithmic}
+\usepackage{hyperref}
+\usetikzlibrary{automata,shapes,topaths,arrows,positioning,fit,automata,backgrounds,trees}
+
+\begin{document}
+
+\section*{Tests}
+
+\begin{minipage}[t]{0.2\textwidth}
+\subsubsection*{Test1}
+\begin{tikzpicture}[node distance=2cm,transform shape,auto,initial text=]
+
+  \node[state, initial, accepting] (q1) {$A$};
+
+\end{tikzpicture}
+\end{minipage}
+\ \
+\begin{minipage}[t]{0.8\textwidth}
+\subsubsection*{Test2}
+\begin{tikzpicture}[node distance=1.5cm,transform shape,auto,initial text=]
+
+
+      \node[state, initial]   (qA)               {$A$};
+      \node[state]            (qB) [right=of qA] {$B$};
+      \node[state]            (qC) [right=of qB] {$C$};
+      \node[state]            (qD) [right=of qC] {$D$};
+      \node[state, accepting] (qE) [right=of qD] {$E$};
+
+      \path (qA) edge[->]            node[above] {$\Sigma$} (qB)
+	    (qB) edge[->,bend left]  node[above] {$\Sigma$} (qD)
+	    (qD) edge[->]            node[above] {$\Sigma$} (qE)
+	    (qE) edge[->, bend left] node[below] {$\Sigma$} (qC)
+	    (qC) edge[->, loop left] node[left]  {$\Sigma$} ();
+
+\end{tikzpicture}
+\end{minipage}
+\\[1cm]
+\begin{minipage}[t]{0.5\textwidth}
+\subsubsection*{Test3}
+\begin{tikzpicture}[node distance=2cm,transform shape,auto,initial text=]
+
+
+  \node[state,initial]   (qA)                     {$A$};
+  \node[state]           (qB) [above right=of qA] {$B$};
+  \node[state]           (qC) [below right=of qA] {$C$};
+  \node[state]           (qD) [right=of qA]       {$D$};
+  \node[state,accepting] (qE) [right=of qD]       {$E$};
+
+  \path (qA) edge[->, bend left]  node       {$Sim_{1}$} (qB)
+	     edge[->, bend right] node[swap] {$Sim_{2}$} (qC)
+	(qB) edge[->, bend left]  node       {$\Sigma$} (qA)
+	(qC) edge[->, bend right] node[swap] {$\Sigma$} (qA)
+	(qD) edge[->]             node[swap] {$\Sigma$} (qB)
+	     edge[->]             node       {$\Sigma$} (qC)
+	     edge[->, bend left]  node       {$\Sigma$} (qE)
+	(qE) edge[->, bend left]  node       {$\Sigma$} (qD);
+
+\end{tikzpicture}
+\end{minipage}
+\ \
+\begin{minipage}[t]{0.5\textwidth}
+\subsubsection*{Test4}
+\begin{tikzpicture}[node distance=2cm,transform shape,auto,initial text=]
+\node[state, initial]   at (90:2cm)  (qA) {$A$};
+\node[state]            at (162:2cm) (qB) {$B$};
+\node[state]            at (234:2cm) (qC) {$C$};
+\node[state]            at (306:2cm) (qD) {$D$};
+\node[state, accepting] at (18:2cm)  (qE) {$E$};
+
+
+\path (qA) edge[->,bend left] (qB)
+	   edge[->,bend left] (qC)
+	   edge[->] (qD)
+	   edge[->, loop above] ()
+	   edge[->] (qE);
+
+\path (qB) edge[->,bend left] (qC)
+	   edge[->,bend left] (qD)
+	   edge[->] (qE)
+	   edge[->, loop left] ()
+	   edge[->] (qA);
+
+\path (qC) edge[->,bend left] (qD)
+	   edge[->,bend left] (qE)
+	   edge[->] (qA)
+	   edge[->, loop below] ()
+	   edge[->] (qB);
+
+\path (qD) edge[->,bend left] (qE)
+	   edge[->,bend left] (qA)
+	   edge[->] (qB)
+	   edge[->, loop below] ()
+	   edge[->] (qC);
+
+\path (qE) edge[->,bend left] (qA)
+	   edge[->,bend left] (qB)
+	   edge[->] (qC)
+	   edge[->, loop right] ()
+	   edge[->] (qD);
+
+\end{tikzpicture}
+
+*Assumes transitions with $\Sigma$ in all the edges
+\end{minipage}
+\\[1cm]
+
+\begin{minipage}[t]{0.5\textwidth}
+\subsubsection*{Test5}
+\begin{tikzpicture}[node distance=2cm,transform shape,auto,initial text=]
+
+\node[state,accepting] (qE) {$E$};
+\node[state, initial]  (qA) [above left =of qE]  {$A$};
+\node[state]           (qB) [above right=of qE]  {$B$};
+\node[state]           (qC) [below right=of qE]  {$C$};
+\node[state]           (qD) [below left =of qE] {$D$};
+
+
+\path (qA) edge[->] (qB)
+	   edge[->, bend left=30] (qC)
+	   edge[->, loop above] ()
+	   edge[->] (qD);
+
+\path (qB) edge[->] (qC)
+	   edge[->, bend left=30] (qD)
+	   edge[->, loop above] ()
+	   edge[->] (qA);
+
+\path (qC) edge[->] (qD)
+	   edge[->, bend left=30] (qA)
+	   edge[->, loop below] ()
+	   edge[->] (qB);
+
+\path (qD) edge[->] (qA)
+	   edge[->, loop below] ()
+	   edge[->, bend left=30] (qB)
+	   edge[->] (qC);
+
+\path (qE) edge[->] (qA)
+	   edge[->] (qB)
+	   edge[->] (qC)
+	   edge[->] (qD)
+	   edge[->, loop above] ();
+
+\end{tikzpicture}
+
+*Assumes transitions with $\Sigma$ in all the edges
+\end{minipage}
+\ \
+\begin{minipage}[t]{0.5\textwidth}
+\subsubsection*{Test6}
+
+\begin{tikzpicture}[node distance=2cm,transform shape,auto,initial text=]
+\node[state, initial]   at (90:2cm)  (qA) {$A$};
+\node[state]            at (162:2cm) (qB) {$B$};
+\node[state]            at (234:2cm) (qC) {$C$};
+\node[state]            at (306:2cm) (qD) {$D$};
+\node[state] at (18:2cm)  (qE) {$E$};
+
+
+\path (qA) edge[->,bend left] (qB)
+	   edge[->,bend left] (qC)
+	   edge[->] (qD)
+	   edge[->, loop above] ()
+	   edge[->] (qE);
+
+\path (qB) edge[->,bend left] (qC)
+	   edge[->,bend left] (qD)
+	   edge[->] (qE)
+	   edge[->, loop left] ()
+	   edge[->] (qA);
+
+\path (qC) edge[->,bend left] (qD)
+	   edge[->,bend left] (qE)
+	   edge[->] (qA)
+	   edge[->, loop below] ()
+	   edge[->] (qB);
+
+\path (qD) edge[->,bend left] (qE)
+	   edge[->,bend left] (qA)
+	   edge[->] (qB)
+	   edge[->, loop below] ()
+	   edge[->] (qC);
+
+\path (qE) edge[->,bend left] (qA)
+	   edge[->,bend left] (qB)
+	   edge[->] (qC)
+	   edge[->, loop right] ()
+	   edge[->] (qD);
+
+\end{tikzpicture}
+
+*Assumes transitions with $\Sigma$ in all the edges
+\end{minipage}
+
+\end{document}
