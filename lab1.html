@@ -3,6 +3,9 @@
 
 <html>
 <head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+
   <title>Testing emptiness of automata</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 </head>
@@ -11,16 +14,15 @@
   <div style="text-align: center;">
     <h1>Programming lab 1: Testing emptiness of automata</h1>
 
-    <p><b>Submission deadline: Friday, August 16 (11:59 p.m.) </b></p>
+    <p><b>Submission deadline: Friday, August 16 (11:59 p.m.)</b></p>
   </div>
 
   <h3>Introduction</h3>
 
   <div style="text-align: left;">
-    <p>The aim of this programming assignment is to write
-      a <a href="http://www.haskell.org">Haskell</a> program
-      that given a non-deterministic finite automaton NFA, determine if
-      L(NFA) = &empty;.</p>
+    <p>The aim of this programming assignment is to write a <a href=
+    "http://www.haskell.org">Haskell</a> program that given a
+    non-deterministic finite automaton NFA, determine if L(NFA) = ∅.</p>
   </div>
 
   <h3>Assignment (80%)</h3>
@@ -28,35 +30,35 @@
   <ul style="text-align: left;">
     <li>Download the <a href="https://github.com/">GitHub</a> repository
     <a href=
-    "https://github.com/agomezl/Empty">agomezl/Empty</a>.
+    "https://github.com/afl-eafit/cb0081-2013-2-lab1">cb0081-2013-2-lab1</a>.
 
       <ul>
-	<li>The module <code>EAFIT.CB0081.Data.NFA</code> implements a
-	  non-deterministic finite automaton.</li>
+        <li>The module <code>EAFIT.CB0081.Data.NFA</code> implements a
+        non-deterministic finite automaton.</li>
 
-	<li>The module <code>EAFIT.CB0081.Data.NFA.Examples</code> gives an
-	example of the data type <code>NFA</code>.</li>
+        <li>The module <code>EAFIT.CB0081.Data.NFA.Examples</code> gives an
+        example of the data type <code>NFA</code>.</li>
       </ul>
     </li>
 
     <li>(70%) Using the module <code>EAFIT.CB0081.Data.NFA</code>, define a
     function.
       <pre>
-	  empty :: NFA state symbol -&gt; Bool
-</pre>that test whether L(NFA) = &empty;.<br>
-	Using the module <code>EAFIT.CB0081.Data.NFA.Examples</code>, for
-	example,
-	  <pre>
-GHCi> empty emptyNFA
+          empty :: NFA state symbol -&gt; Bool
+</pre>that test whether L(NFA) = ∅.<br>
+      Using the module <code>EAFIT.CB0081.Data.NFA.Examples</code>, for
+      example,
+      <pre>
+GHCi&gt; empty emptyNFA
 True
-GHCi> empty nonemptyNFA
+GHCi&gt; empty nonemptyNFA
 False
 </pre>
     </li>
 
-    <li>(10%) Annotate your source code in a way that
-      explains your solution for the assignment. Improve it with
-      <a href="http://community.haskell.org/~ndm/hlint/">HLint</a> .</li>
+    <li>(10%) Annotate your source code in a way that explains your solution
+    for the assignment. Improve it with <a href=
+    "http://community.haskell.org/~ndm/hlint/">HLint</a> .</li>
   </ul>
 
   <h3>Clean code (10%)</h3>
@@ -92,24 +94,23 @@ False
     <p>Your submission has to include the following:</p>
 
     <ul>
-      <li><tt>EmptyNFA.hs</tt>, a 
-	<a href="http://www.haskell.org">Haskell</a> 
-	module file with your solution for the
-	assignment.</li>
+      <li><tt>EmptyNFA.hs</tt>, a <a href=
+      "http://www.haskell.org">Haskell</a> module file with your solution for
+      the assignment.</li>
 
       <li>
-	<tt>README</tt> (or <tt>README.md</tt>), a file containing at least
-	the following information.
+        <tt>README</tt> (or <tt>README.md</tt>), a file containing at least
+        the following information.
 
-	<ul>
-	  <li>The name of your program.</li>
+        <ul>
+          <li>The name of your program.</li>
 
-	  <li>Your name(s).</li>
+          <li>Your name(s).</li>
 
-	  <li>A general description of your program.</li>
+          <li>A general description of your program.</li>
 
-	  <li>Information on how to use your program.</li>
-	</ul>
+          <li>Information on how to use your program.</li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -120,8 +121,8 @@ False
     <li>The programming lab may either be solved on your own, or jointly with
     one other student taking the course.</li>
 
-    <li>You are to use the <a href="http://www.haskell.org/platform/">
-	Haskell Platform</a> 2013.2.0.0 or GHC ≥ 7.6.3.</li>
+    <li>You are to use the <a href="http://www.haskell.org/platform/">Haskell
+    Platform</a> 2013.2.0.0 or GHC ≥ 7.6.3.</li>
 
     <li>You can add class constraints to the type signature of
     <code>empty</code> if you need them.</li>
@@ -130,8 +131,8 @@ False
   <h3>Bibliography</h3>
 
   <p style="text-align: left;">Hopcroft, John E.; Motwani, Rajeev; Ullman,
-    Jeffrey D. (2006). <i>Introduction to Automata Theory
-    , Languages, and Computation</i> (3rd ed.). Addison-Wesley.</p>
+  Jeffrey D. (2006). <i>Introduction to Automata Theory , Languages, and
+  Computation</i> (3rd ed.). Addison-Wesley.</p>
   <hr>
 
   <p><a href=
